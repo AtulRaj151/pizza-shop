@@ -1,0 +1,28 @@
+/* Card.css */
+
+.card {
+    width: 200px;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+  }
+  
+  .card p {
+    margin-bottom: 10px;
+  }
+  
+  .card button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .card button:hover {
+    background-color: #0056b3;
+  }
+  

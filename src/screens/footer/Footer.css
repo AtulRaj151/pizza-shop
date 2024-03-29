@@ -1,0 +1,25 @@
+/* Footer.css */
+
+.footer {
+    background-image: linear-gradient(to right, #bdc3c7, #ecf0f1);
+    color: #333; /* Adjust text color for better readability */
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .text {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .text span {
+    font-size: 16px;
+  }
+  

@@ -1,0 +1,36 @@
+/* OrderSection.css */
+
+.section-wrapper {
+  margin: 20px;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  animation: pulse 2s infinite;
+}
+
+.order-section h2 {
+  margin-bottom: 10px;
+}
+
+.order-container {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+}
+
+@keyframes pulse {
+  0% {
+    border-color: rgba(159, 184, 70, 0.1);
+  }
+  50% {
+    border-color: rgba(9, 98, 56, 0.794);
+  }
+  100% {
+    border-color: rgba(234, 137, 26, 0.1);
+  }
+}
+
+
+
