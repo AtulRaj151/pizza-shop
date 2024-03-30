@@ -1,20 +1,36 @@
 // OrderSection.js
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Card from '../card/Card';
 import './OrderSection.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { changeOrderStage, updateOrderTime } from '../../redux/actions';
+import { DELAY } from '../../constants/constant';
 
-const OrderSection = ({ label, orderNos }) => {
-    const handleNext = () => {
-        // Handle next action
-        // console.log(`Order ${orderNo}: Next`);
+const NEXT_ORDER = {
+    'ORDER_PLACED': 'ORDER_MAKING',
+    'ORDER_MAKING': 'ORDER_READY',
+    'ORDER_READY': 'ORDER_PICKED',
+    'ORDER_PICKED': ''
+}
+
+const OrderSection = ({ label, stage }) => {
+    const orders = useSelector(({ orders }) => orders);
+    const dispatch = useDispatch();
+    const handleNext = (order) => {
+        if (!NEXT_ORDER[order.stage]) {
+            return;
+        }
+        dispatch(changeOrderStage(order, NEXT_ORDER[order.stage]));
+
     };
+
 
     return (
         <div className="section-wrapper">
             <h2>{label}</h2>
             <div className="order-container">
-                {orderNos.map((order) => (<Card orderNo={order} onNext={handleNext} />))}
+                {orders.map((order) => order?.stage === stage ? (<Card order={order} isNext={NEXT_ORDER[order.stage]} onNext={() => handleNext(order)} key={order?.id} isBlinking={order.startTime > DELAY[order.size]} />) : null)}
             </div>
         </div>
     );

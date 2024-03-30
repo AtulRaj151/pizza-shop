@@ -4,7 +4,7 @@ import App from './App.jsx'
 import './index.css'
 import { Provider } from 'react-redux';
 import { NotifyProvider } from './helper/NotifyContext';
-import Notification from './helper/Notification.jsx';
+import Notification from './helper/Notification';
 import store from './redux/store'
 
 ReactDOM.createRoot(document.getElementById('root')).render(

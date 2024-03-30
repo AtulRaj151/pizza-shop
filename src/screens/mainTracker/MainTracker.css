@@ -22,7 +22,7 @@
   }
   
   .action-button {
-    background-color: #007bff;
+    background-color: #f62c21;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -32,6 +32,6 @@
   }
   
   .action-button:hover {
-    background-color: #0056b3;
+    background-color: #d82f2c;
   }
   

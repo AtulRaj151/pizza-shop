@@ -14,3 +14,34 @@ export const makeNewOrder = (order) => {
         }
     }
 }
+
+export const changeOrderStage = (order, nextStage) => { 
+  return {
+      type: 'CHANGE_ORDER_STAGE',
+      payload: {
+         ...order,
+          stage: nextStage,
+      }
+  }
+}
+
+export const updateOrderTime = (order, time, total) => {
+    return {
+        type: 'UPDATE_ORDER_TIME',
+        payload: {
+           ...order,
+            startTime: time,
+            totalTime: total
+        }
+    }
+}
+
+export const cancelOrder = (order) => {
+     return {
+        type: 'CANCEL_ORDER',
+        payload: {
+           ...order
+
+        }
+     }
+}

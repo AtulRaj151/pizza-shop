@@ -2,8 +2,17 @@
 
 import React from 'react';
 import './MainTracker.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { LABEL, LABEL_VALUE } from '../../constants/constant';
+import { cancelOrder } from '../../redux/actions';
+import { formatTime } from '../../utils';
 
-const MainTracker = ({ orders }) => {
+const MainTracker = () => {
+  const orders = useSelector(({ orders }) => orders);
+  const dispatch = useDispatch();
+  const handleClick = (order) => {
+    dispatch(cancelOrder(order))
+  }
   return (
     <div className="main-tracker">
       <h2>Main Tracker</h2>
@@ -20,10 +29,10 @@ const MainTracker = ({ orders }) => {
           {orders.map(order => (
             <tr key={order.id}>
               <td>{order.id}</td>
-              <td>{order.stage}</td>
-              <td>{order.totalTimeSpent}</td>
+              <td>{LABEL_VALUE[order.stage]}</td>
+              <td>{formatTime(order.totalTime)}</td>
               <td>
-                <button className="action-button">Action</button>
+                {order.stage !== LABEL.ORDER_PICKED && <button className="action-button" onClick={() => handleClick(order)}>Cancel</button>}
               </td>
             </tr>
           ))}
