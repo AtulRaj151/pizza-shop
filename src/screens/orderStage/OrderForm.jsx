@@ -45,6 +45,7 @@ export default function OrderForm() {
         setTimeout(() => {
             clearNotification();
         }, 3000)
+        handleCloseModal();
     };
 
     const handleChange = (e) => {
