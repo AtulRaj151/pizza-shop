@@ -1,6 +1,6 @@
 .notification-container {
   position: fixed;
-  bottom: 20px;
+  top: 20px;
   right: 20px;
   z-index: 1000;
 }
@@ -27,3 +27,8 @@
   background-color: orange;
   color: white;
 }
+
+.notification.success {
+    background-color: rgb(58, 205, 17);
+    color: white;
+ }

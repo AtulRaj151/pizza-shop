@@ -3,7 +3,7 @@ export const isObjectHasValues = (obj) => {
         return false;
       }
     
-      return Object.keys(obj).length === 3;
+    return Object.values(obj).every(Boolean)
 }
 
 export const  formatTime = (totalSeconds)=> {

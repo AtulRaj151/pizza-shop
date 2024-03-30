@@ -28,9 +28,9 @@ const OrderSection = ({ label, stage }) => {
 
     return (
         <div className="section-wrapper">
-            <h2>{label}</h2>
+            <h2 style={{ position: 'sticky', top: '0', background: '#ffffff' }}>{label}</h2>
             <div className="order-container">
-                {orders.map((order) => order?.stage === stage ? (<Card order={order} isNext={NEXT_ORDER[order.stage]} onNext={() => handleNext(order)} key={order?.id} isBlinking={order.startTime > DELAY[order.size]} />) : null)}
+                {orders.sort((a, b) => b.totalTime - a.totalTime).map((order) => order?.stage === stage ? (<Card order={order} isNext={NEXT_ORDER[order.stage]} onNext={() => handleNext(order)} key={order?.id} isBlinking={order.startTime > DELAY[order.size]} />) : null)}
             </div>
         </div>
     );

@@ -8,7 +8,7 @@ import { makeNewOrder } from '../../redux/actions';
 export default function OrderForm() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const dispatch = useDispatch();
-    const { showWarning } = useNotify();
+    const { showWarning, clearNotification, showSuccess } = useNotify();
     const orders = useSelector(({ orders }) => orders);
     const [formData, setFormData] = useState({
         type: '',
@@ -34,7 +34,7 @@ export default function OrderForm() {
                     size: '',
                     base: '',
                 });
-                showWarning('Order placed successfully')
+                showSuccess('Order placed successfully')
             } else {
                 showWarning('Please add at least one order');
             }
@@ -42,12 +42,14 @@ export default function OrderForm() {
         } else {
             showWarning('Shop closed!!');
         }
+        setTimeout(() => {
+            clearNotification();
+        }, 3000)
     };
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
-    console.log(orders)
     return (
         <>
             <button className="new-order-button" onClick={handleOpenModal}>Make New Order</button>

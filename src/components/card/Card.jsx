@@ -7,7 +7,8 @@ const Card = ({ order, isBlinking, isNext, onNext }) => {
     return (
         <div className={`card ${isBlinking ? 'blink-red' : ''}`}>
             <p>Order No: {order?.id}</p>
-            <p>Order Time: {formatTime(order?.startTime)}</p>
+            <p>Stage Time: {formatTime(order?.startTime)}</p>
+            <p>Order Time: {formatTime(order?.totalTime)}</p>
             {isNext ? <button onClick={onNext}>Next</button> : <button disabled style={{ background: 'grey' }}>Order Picked</button>}
         </div>
     );

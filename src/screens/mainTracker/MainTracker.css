@@ -34,4 +34,12 @@
   .action-button:hover {
     background-color: #d82f2c;
   }
+
+  @media screen and (min-width: 425px) {
+    .main-tracker {
+      width:100% ;
+  
+    }
+    
+  }
   

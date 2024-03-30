@@ -12,6 +12,9 @@ export const NotifyProvider = ({ children }) => {
   const showWarning = (message) => {
     setNotifications([...notifications, { type: 'warning', message }]);
   };
+  const showSuccess = (message) => {
+    setNotifications([...notifications, { type: 'success', message }]);
+  };
 
   const clearNotification = (index) => {
     const newNotifications = [...notifications];
@@ -26,6 +29,7 @@ export const NotifyProvider = ({ children }) => {
         showError,
         showWarning,
         clearNotification,
+        showSuccess
       }}
     >
       {children}

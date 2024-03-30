@@ -2,6 +2,8 @@
 
 .order-section-main{
   margin-top: 40px;
+  display: flex;
+  flex-wrap: nowrap;
 }
 
  form {
@@ -67,4 +69,10 @@ button[type="submit"]:hover {
    justify-content: space-around;
    align-items: center;
    
+}
+
+@media  only screen and ( max-width: 768px ) {
+  .section-container {
+     flex-direction: column;
+ }
 }
