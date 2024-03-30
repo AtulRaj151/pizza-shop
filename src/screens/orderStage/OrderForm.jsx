@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import FlowModal from '../../components/modal/FlowModal';
+import { useSelector, useDispatch } from 'react-redux';
+import { isObjectHasValues } from '../../utils/index';
+import { useNotify } from '../../helper/NotifyContext';
 
 export default function OrderForm() {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const dispatch = useDispatch();
+    const { showWarning } = useNotify();
+    const orders = useSelector(({ orders }) => orders);
     const [formData, setFormData] = useState({
-        type: 'Veg',
-        size: 'Large',
-        base: 'Thin',
+        type: '',
+        size: '',
+        base: '',
     });
 
     const handleOpenModal = () => {
@@ -17,8 +23,23 @@ export default function OrderForm() {
         setIsModalOpen(false);
     };
 
-    const handleSubmit = () => {
-        // Handle form submission or any other action
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (orders.length <= 10) {
+            if (isObjectHasValues(orders)) {
+                dispatch(placeOrder(orders));
+                setFormData({
+                    type: '',
+                    size: '',
+                    base: '',
+                });
+            } else {
+                showWarning('Please add at least one order');
+            }
+
+        } else {
+
+        }
         console.log('Form submitted with data:', formData);
         handleCloseModal();
     };
@@ -32,7 +53,6 @@ export default function OrderForm() {
             <FlowModal
                 isOpen={isModalOpen}
                 onClose={handleCloseModal}
-                onSubmit={handleSubmit}
             >
                 <h2>Customize Pizza</h2>
                 <form onSubmit={handleSubmit}>

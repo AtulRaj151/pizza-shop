@@ -1,0 +1,1 @@
+export const ORDER_PLACED = 'ORDER_PLACED';
